@@ -15,14 +15,19 @@ final class DeleteOfficeSpecification implements RequestSpecificationInterface
     /** @inheritDoc */
     public function isSatisfiedBy(RequestInterface $request): bool
     {
-        $params = $request->getParsedBody();
+        try {
+            $params = $request->getParsedBody();
 
-        if (empty($params[Param::UUID])) {
+            if (empty($params[Param::UUID])) {
+                return false;
+            }
+
+            Uuid::fromString($params[Param::UUID]);
+
+            return true;
+
+        } catch (\Exception $exception) {
             return false;
         }
-
-        Uuid::fromString($params[Param::UUID]);
-
-        return true;
     }
 }

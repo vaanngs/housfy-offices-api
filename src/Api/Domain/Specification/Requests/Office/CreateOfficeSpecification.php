@@ -23,16 +23,20 @@ final class CreateOfficeSpecification implements RequestSpecificationInterface
      */
     public function isSatisfiedBy(RequestInterface $request): bool
     {
-        $params      = $request->getParsedBody();
-        $addressData = $params[Param::OFFICE_ADDRESS];
+        try {
+            $params      = $request->getParsedBody();
+            $addressData = $params[Param::OFFICE_ADDRESS];
 
-        OfficeName::checkAssertion($params[Param::OFFICE_NAME]);
+            OfficeName::checkAssertion($params[Param::OFFICE_NAME]);
 
-        foreach ($addressData as $address) {
-            $this->checkAddress($address);
+            foreach ($addressData as $address) {
+                $this->checkAddress($address);
+            }
+
+            return true;
+        } catch (\Exception $exception) {
+            return false;
         }
-
-        return true;
     }
 
 

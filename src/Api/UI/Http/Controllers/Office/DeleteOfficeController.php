@@ -11,6 +11,7 @@ use Exception;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\StatusCode;
+use Throwable;
 
 final class DeleteOfficeController extends AbstractController
 {
@@ -57,11 +58,17 @@ final class DeleteOfficeController extends AbstractController
      * @param Request $request
      * @param Response $response
      * @return Response
+     * @throws Throwable
      */
     public function delete(Request $request, Response $response): Response
     {
         try {
-            $this->isRequestValid($request);
+            if (!$this->isRequestValid($request)) {
+                return $response->withJson(
+                    ['Invalid provided parameters. Please check them.'],
+                    StatusCode::HTTP_UNPROCESSABLE_ENTITY
+                );
+            }
 
             $command = new DeleteOfficeCommand(
                 $request->getParsedBodyParam(Param::UUID)

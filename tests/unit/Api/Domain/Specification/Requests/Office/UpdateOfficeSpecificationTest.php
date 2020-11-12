@@ -43,6 +43,22 @@ final class UpdateOfficeSpecificationTest extends TestCase
     public function should_not_satisfy_request_when_uuid_is_invalid()
     {
         $request = RequestFactory::make('POST', [
+            Param::UUID => 'this is not an uuid'
+        ]);
+
+        $specification = new UpdateOfficeSpecification();
+
+        self::assertFalse($specification->isSatisfiedBy($request));
+    }
+
+
+    /**
+     * @test
+     * @throws Throwable
+     */
+    public function should_not_satisfy_request_when_uuid_is_empty()
+    {
+        $request = RequestFactory::make('POST', [
             Param::UUID => null
         ]);
 

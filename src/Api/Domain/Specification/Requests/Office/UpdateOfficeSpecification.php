@@ -23,27 +23,32 @@ final class UpdateOfficeSpecification implements RequestSpecificationInterface
      */
     public function isSatisfiedBy(RequestInterface $request): bool
     {
-        $params = $request->getParsedBody();
+        try {
+            $params = $request->getParsedBody();
 
-        if (empty($params[Param::UUID])) {
+            if (empty($params[Param::UUID])) {
+                return false;
+            }
+
+            Uuid::fromString($params[Param::UUID]);
+
+            if (!empty($params[Param::OFFICE_NAME])) {
+                OfficeName::checkAssertion($params[Param::OFFICE_NAME]);
+            }
+
+            if (!empty($params[Param::OFFICE_ADDRESS])) {
+                $addressData = $params[Param::OFFICE_ADDRESS];
+
+                foreach ($addressData as $address) {
+                    $this->checkAddress($address);
+                }
+            }
+
+            return true;
+
+        } catch (\Exception $exception) {
             return false;
         }
-
-        Uuid::fromString($params[Param::UUID]);
-
-        if (!empty($params[Param::OFFICE_NAME])) {
-            OfficeName::checkAssertion($params[Param::OFFICE_NAME]);
-        }
-
-        if (!empty($params[Param::OFFICE_ADDRESS])) {
-            $addressData = $params[Param::OFFICE_ADDRESS];
-
-            foreach ($addressData as $address) {
-                $this->checkAddress($address);
-            }
-        }
-
-        return true;
     }
 
 

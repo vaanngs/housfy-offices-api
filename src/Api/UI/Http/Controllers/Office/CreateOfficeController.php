@@ -86,7 +86,12 @@ final class CreateOfficeController extends AbstractController
     public function create(Request $request, Response $response): Response
     {
         try {
-            $this->isRequestValid($request);
+            if (!$this->isRequestValid($request)) {
+                return $response->withJson(
+                    ['Invalid provided parameters. Please check them.'],
+                    StatusCode::HTTP_UNPROCESSABLE_ENTITY
+                );
+            }
 
             $params  = $request->getParsedBody();
             $address = $params[Param::OFFICE_ADDRESS];

@@ -95,7 +95,12 @@ final class UpdateOfficeController extends AbstractController
     public function update(Request $request, Response $response): Response
     {
         try {
-            $this->isRequestValid($request);
+            if (!$this->isRequestValid($request)) {
+                return $response->withJson(
+                    ['Invalid provided parameters. Please check them.'],
+                    StatusCode::HTTP_UNPROCESSABLE_ENTITY
+                );
+            }
 
             $command = new UpdateOfficeCommand(
                 $request->getParsedBodyParam(Param::UUID),
