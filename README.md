@@ -3,6 +3,9 @@
     code as simple as possible. 
   <br />
   <br />
+</p>
+
+## 🚀 Environment Setup
   Stack used: <br />
   - <strong>Framework:</strong> PhpSlim 3 <br/>
   - <strong>Language:</strong> PHP 7.4 <br/>
@@ -11,9 +14,6 @@
   - <strong>Unit testing:</strong> PHPUnit <br/>
   - <strong>Functional testing:</strong> Codeception <br/>
   - <strong>Infrastructure:</strong> Docker with Docker compose <br/>
-</p>
-
-## 🚀 Environment Setup
 
 ### 🐳 Needed tools
 
