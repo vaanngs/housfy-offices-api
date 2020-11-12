@@ -11,6 +11,9 @@ purge: ## Purge cache and logs
 	ls var | grep -v logs | grep -v cache | xargs -I % sh -c 'rm -rf var/%'
 	ls var/cache/doctrine | grep -v '.gitkeep' | xargs -I % sh -c 'rm -rf var/cache/doctrine/%'
 
+cs-fix: ## Executes cs fixer
+	bin/php-cs-fixer --no-interaction -v fix
+
 ## —— Housfy Offices API ———————————————————————————————————————————————————————————
 install: ## Install vendors according to the current composer.lock file
 	docker exec officesphp bash -c "composer install"
@@ -19,10 +22,14 @@ update: ## Update vendors according to the current composer.json file
 	docker exec officesphp bash -c "composer update"
 
 migrations: ## Load data to DB, ATTENTION!!: This Will remove all previous data
-	bin/console housfy:offices:migrations:load
+	docker exec officesphp bash -c "bin/console housfy:offices:migrations:load"
 
 test-unit: phpunit.xml ## Launch unit tests inside docker container
-	docker exec officesphp bash -c "bin/phpunit --stop-on-failure --testdox --colors"
+	docker exec officesphp bash -c "bin/phpunit --stop-on-failure --testdox --colors=always"
 
 test-functional: ## Launch functional tests inside docker container
-	docker exec officesphp bash -c "bin/codecept run functional"
+	docker exec officesphp bash -c "bin/codecept run functional --colors=always"
+
+precommit-test: ## This is an automatic command to prevent commits without testing!! :)
+	docker exec officesphp bash -c "bin/phpunit --stop-on-failure --testdox --colors=always --no-coverage"
+	docker exec officesphp bash -c "bin/codecept run functional --colors=always --no-coverage"
