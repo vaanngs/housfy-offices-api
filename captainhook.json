@@ -21,7 +21,7 @@
                 "conditions": []
             },
             {
-                "action": "docker-compose run officesphp bash -c 'make test-pre-commit'",
+                "action": "docker-compose run officesphp bash -c 'make precommit-test'",
                 "options": [],
                 "conditions": []
             }
