@@ -8,12 +8,11 @@ use Api\Domain\Entities\Shared\EntityEvent;
 use Api\Domain\Event\Office\OfficeWasCreated;
 use Api\Domain\Event\Office\OfficeWasUpdated;
 use Api\Domain\Shared\Param;
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeName;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeName;
 use Exception;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Throwable;
 
 final class Office extends EntityEvent
 {

@@ -9,9 +9,9 @@ interface OfficeRepositoryInterface
 {
 
     /**
-     * @return iterable
+     * @return array
      */
-    public function findAll(): iterable;
+    public function findAll(): array;
 
 
     /**

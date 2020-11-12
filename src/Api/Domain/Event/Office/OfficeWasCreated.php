@@ -8,8 +8,8 @@ use Api\Domain\Entities\Office;
 use Api\Domain\Event\Shared\AbstractEvent;
 use Api\Domain\Event\Shared\EventInterface;
 use Api\Domain\Shared\Param;
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeName;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeName;
 use Ramsey\Uuid\UuidInterface;
 
 final class OfficeWasCreated extends AbstractEvent implements EventInterface

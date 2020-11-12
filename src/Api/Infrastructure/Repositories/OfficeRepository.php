@@ -6,7 +6,6 @@ namespace Api\Infrastructure\Repositories;
 
 use Api\Domain\Entities\Office;
 use Api\Domain\ReadModel\OfficeRepositoryInterface;
-use Api\Domain\Shared\CacheInterface;
 use Api\Domain\Specification\Factory\SpecificationFactoryInterface;
 use Api\Infrastructure\Doctrine\Model\ReadModel;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,26 +15,18 @@ final class OfficeRepository extends ReadModel implements OfficeRepositoryInterf
 
     /**
      * @param EntityManagerInterface $entityManager
-     * @param CacheInterface $cache
      */
-    public function __construct(EntityManagerInterface $entityManager, CacheInterface $cache)
+    public function __construct(EntityManagerInterface $entityManager)
     {
         $this->class = Office::class;
 
-        parent::__construct($entityManager, $cache);
+        parent::__construct($entityManager);
     }
 
 
     /** @inheritDoc */
-    public function findAll(): iterable
+    public function findAll(): array
     {
-        $cacheKey = $this->makeCacheKey('offices-find-all');
-        $result   = $this->findInCache($cacheKey);
-
-        if (!empty($result)) {
-            return $result;
-        }
-        
         $builder = $this->createOrmQueryBuilder();
 
         $builder
@@ -44,8 +35,6 @@ final class OfficeRepository extends ReadModel implements OfficeRepositoryInterf
 
         $query  = $builder->getQuery();
         $result = $query->getResult();
-
-        $this->setCachedContent($cacheKey, $result, self::DEFAULT_TTL);
 
         return $result;
     }

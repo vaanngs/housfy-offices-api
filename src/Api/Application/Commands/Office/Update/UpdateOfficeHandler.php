@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Api\Application\Commands\Office\Update;
 
-use Api\Domain\Entities\Office;
 use Api\Domain\Service\Finders\Office\OfficeFinderInterface;
 
 final class UpdateOfficeHandler

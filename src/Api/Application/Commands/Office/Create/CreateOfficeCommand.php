@@ -6,14 +6,12 @@ namespace Api\Application\Commands\Office\Create;
 
 use Api\Application\Commands\CommandInterface;
 use Api\Domain\Shared\Param;
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeAddressLine;
-use Api\Domain\ValueObjs\OfficeCity;
-use Api\Domain\ValueObjs\OfficeName;
-use Api\Domain\ValueObjs\OfficePostalcode;
-use Api\Domain\ValueObjs\OfficeProvince;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeAddressLine;
+use Api\Domain\ValueObjs\Office\OfficeCity;
+use Api\Domain\ValueObjs\Office\OfficeName;
+use Api\Domain\ValueObjs\Office\OfficePostalcode;
+use Api\Domain\ValueObjs\Office\OfficeProvince;
 use Throwable;
 
 final class CreateOfficeCommand implements CommandInterface

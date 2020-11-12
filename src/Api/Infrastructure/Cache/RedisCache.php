@@ -13,8 +13,6 @@ use Predis\ClientInterface;
 final class RedisCache implements CacheInterface
 {
 
-    const TTL_1_DAY = 86400;
-
     /** @var RedisClient|null  */
     private static $redis = null;
 

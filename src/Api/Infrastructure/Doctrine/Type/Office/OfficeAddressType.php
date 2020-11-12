@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Api\Infrastructure\Doctrine\Type\Office;
 
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeAddressLine;
-use Api\Domain\ValueObjs\OfficeCity;
-use Api\Domain\ValueObjs\OfficePostalcode;
-use Api\Domain\ValueObjs\OfficeProvince;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeAddressLine;
+use Api\Domain\ValueObjs\Office\OfficeCity;
+use Api\Domain\ValueObjs\Office\OfficePostalcode;
+use Api\Domain\ValueObjs\Office\OfficeProvince;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use Throwable;
 
-final class AddressType extends Type
+final class OfficeAddressType extends Type
 {
 
-    const NAME = 'address';
+    const NAME = 'officeAddress';
 
 
     /** @inheritDoc */

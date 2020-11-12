@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+
+    <entity name="Api\Domain\Entities\Event" table="event">
+        <indexes>
+            <index name="event_idx" columns="event_name"/>
+        </indexes>
+
+        <id name="uuid" type="uuid" column="uuid"/>
+        <field name="name" type="eventName" column="event_name"/>
+        <field name="payload" type="eventPayload" column="payload" column-definition="JSON NOT NULL" />
+    </entity>
+
+</doctrine-mapping>

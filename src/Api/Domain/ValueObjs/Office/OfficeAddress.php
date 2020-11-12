@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Api\Domain\ValueObjs;
+namespace Api\Domain\ValueObjs\Office;
 
 use Api\Domain\Shared\Param;
 
@@ -52,7 +52,7 @@ final class OfficeAddress
      *
      * Note: I use method name "toRender()" when I want to only show
      * non-sensitive info to the frontend user. If I dont mine, I use
-     * instead method name "toArray()" (mainly for business logic).
+     * method name "toArray()" (mainly for business logic).
      * In this case there is no sensitive info so...
      */
     public function toRender(): iterable

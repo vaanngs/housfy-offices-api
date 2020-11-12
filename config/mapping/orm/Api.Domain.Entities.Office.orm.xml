@@ -12,8 +12,8 @@
         </unique-constraints>
 
         <id name="uuid" type="uuid" column="uuid"/>
-        <field name="name" type="name" column="name"/>
-        <field name="address" type="address" column="address"/>
+        <field name="name" type="officeName" column="name"/>
+        <field name="address" type="officeAddress" column="address"/>
     </entity>
 
 </doctrine-mapping>

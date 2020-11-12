@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Api\Infrastructure\Doctrine\Type\Office;
 
-use Api\Domain\ValueObjs\OfficeName;
+use Api\Domain\ValueObjs\Office\OfficeName;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 
-final class NameType extends Type
+final class OfficeNameType extends Type
 {
 
-    const NAME = 'name';
+    const NAME = 'officeName';
 
 
     /** @inheritDoc */

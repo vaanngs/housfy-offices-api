@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace Api\Infrastructure\Console\Migrations\Office;
 
 use Api\Domain\Entities\Office;
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeAddressLine;
-use Api\Domain\ValueObjs\OfficeCity;
-use Api\Domain\ValueObjs\OfficeName;
-use Api\Domain\ValueObjs\OfficePostalcode;
-use Api\Domain\ValueObjs\OfficeProvince;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeAddressLine;
+use Api\Domain\ValueObjs\Office\OfficeCity;
+use Api\Domain\ValueObjs\Office\OfficeName;
+use Api\Domain\ValueObjs\Office\OfficePostalcode;
+use Api\Domain\ValueObjs\Office\OfficeProvince;
 use Api\Infrastructure\Console\Migrations\MigrationInterface;
-use Tests\Mock\FakeOfficeBuilder;
 use Throwable;
 
 final class LoadOffices implements MigrationInterface
@@ -28,7 +27,7 @@ final class LoadOffices implements MigrationInterface
     public function load(): iterable
     {
         $result = [];
-        for ($counter = 50; $counter >= 0; $counter--) {
+        for ($counter = 49; $counter > 0; $counter--) {
             $officeName    = OfficeName::fromString("Office Test {$counter}");
             $officeAddress = OfficeAddress::build(
                 OfficePostalcode::fromString('08840'),

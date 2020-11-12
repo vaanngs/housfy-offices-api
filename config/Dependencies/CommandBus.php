@@ -32,7 +32,8 @@ $container['CreateOfficeHandler'] = function (ContainerInterface $c): CreateOffi
 
 $container['FindAllOfficesHandler'] = function (ContainerInterface $c): FindAllOfficesHandler {
     return new FindAllOfficesHandler(
-        $c['OfficeRepository']
+        $c['OfficeRepository'],
+        $c['CacheService']
     );
 };
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Api\Domain\ValueObjs;
+namespace Api\Domain\ValueObjs\Office;
 
 use Assert\Assertion;
 use Throwable;

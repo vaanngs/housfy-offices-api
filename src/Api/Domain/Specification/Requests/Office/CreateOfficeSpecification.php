@@ -6,12 +6,12 @@ namespace Api\Domain\Specification\Requests\Office;
 
 use Api\Domain\Shared\Param;
 use Api\Domain\Specification\Requests\RequestSpecificationInterface;
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeAddressLine;
-use Api\Domain\ValueObjs\OfficeCity;
-use Api\Domain\ValueObjs\OfficeName;
-use Api\Domain\ValueObjs\OfficePostalcode;
-use Api\Domain\ValueObjs\OfficeProvince;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeAddressLine;
+use Api\Domain\ValueObjs\Office\OfficeCity;
+use Api\Domain\ValueObjs\Office\OfficeName;
+use Api\Domain\ValueObjs\Office\OfficePostalcode;
+use Api\Domain\ValueObjs\Office\OfficeProvince;
 use Psr\Http\Message\RequestInterface;
 use Throwable;
 

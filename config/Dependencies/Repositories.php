@@ -8,7 +8,6 @@ use Psr\Container\ContainerInterface;
 
 $container['OfficeRepository'] = function (ContainerInterface $c): OfficeRepositoryInterface {
     return new OfficeRepository(
-        $c['EntityManager'],
-        $c['RedisCache']
+        $c['EntityManager']
     );
 };
