@@ -10,7 +10,7 @@ use Throwable;
 
 abstract class AbstractCacheRepository
 {
-    const DEFAULT_TTL = 86400;
+    const DEFAULT_TTL = 120;
 
     /** @var CacheInterface */
     private $cache;

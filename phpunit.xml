@@ -1,38 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.3/phpunit.xsd"
-         backupGlobals="false"
-         colors="true"
-         backupStaticAttributes="false"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false"
-         bootstrap="vendor/autoload.php"
->
-
-    <testsuites>
-        <testsuite name="api">
-            <directory>tests</directory>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory>src</directory>
-            <exclude>
-                <directory suffix=".php">./src/Infrastructure</directory>
-                <directory suffix=".php">./src/UI</directory>
-            </exclude>
-        </whitelist>
-    </filter>
-
-    <logging>
-        <log type="coverage-html"   target="./var/phpunit/html"/>
-        <log type="coverage-clover" target="./var/phpunit/test-clover.xml" />
-        <log type="junit"           target="./var/phpunit/test-junit.xml" />
-    </logging>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" backupGlobals="false" colors="true" backupStaticAttributes="false" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" bootstrap="vendor/autoload.php">
+  <coverage>
+    <include>
+      <directory>src</directory>
+    </include>
+    <exclude>
+      <directory suffix=".php">./src/Api/Infrastructure</directory>
+      <directory suffix=".php">./src/Api/UI</directory>
+    </exclude>
+    <report>
+      <clover outputFile="./var/phpunit/test-clover.xml"/>
+      <html outputDirectory="./var/phpunit/html"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="api">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+  <logging>
+    <junit outputFile="./var/phpunit/test-junit.xml"/>
+  </logging>
 </phpunit>

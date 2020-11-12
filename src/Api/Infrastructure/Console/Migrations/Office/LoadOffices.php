@@ -12,6 +12,7 @@ use Api\Domain\ValueObjs\OfficeName;
 use Api\Domain\ValueObjs\OfficePostalcode;
 use Api\Domain\ValueObjs\OfficeProvince;
 use Api\Infrastructure\Console\Migrations\MigrationInterface;
+use Tests\Mock\FakeOfficeBuilder;
 use Throwable;
 
 final class LoadOffices implements MigrationInterface
@@ -27,7 +28,7 @@ final class LoadOffices implements MigrationInterface
     public function load(): iterable
     {
         $result = [];
-        for ($counter = 51; $counter >= 1; $counter--) {
+        for ($counter = 50; $counter >= 0; $counter--) {
             $officeName    = OfficeName::fromString("Office Test {$counter}");
             $officeAddress = OfficeAddress::build(
                 OfficePostalcode::fromString('08840'),
@@ -39,6 +40,18 @@ final class LoadOffices implements MigrationInterface
             $office = Office::create($officeName, $officeAddress);
             $result[] = $office;
         }
+
+        // This office is created only for running Functional test
+        Office::create(
+            OfficeName::fromString("Office for Functional Testing"),
+            OfficeAddress::build(
+                OfficePostalcode::fromString('08840'),
+                OfficeProvince::fromString('Barcelona'),
+                OfficeCity::fromString('Viladecans'),
+                OfficeAddressLine::fromString("C/ Miramar, nº{$counter}")
+            ),
+            '002e4d13-a119-4cf4-a67b-11ef08c46088'
+        );
 
         return $result;
     }

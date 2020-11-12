@@ -10,6 +10,7 @@ use Api\Domain\Event\Office\OfficeWasUpdated;
 use Api\Domain\Shared\Param;
 use Api\Domain\ValueObjs\OfficeAddress;
 use Api\Domain\ValueObjs\OfficeName;
+use Exception;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Throwable;
@@ -32,17 +33,19 @@ final class Office extends EntityEvent
     /**
      * @param OfficeName $name
      * @param OfficeAddress $address
+     * @param string|null $uuid
      * @return static
-     * @throws Throwable
+     * @throws Exception
      */
     public static function create(
         OfficeName $name,
-        OfficeAddress $address
+        OfficeAddress $address,
+        ?string $uuid = null
     )
     {
         $instance = new static();
 
-        $instance->uuid    = Uuid::uuid4();
+        $instance->uuid    = (!empty($uuid)) ? Uuid::fromString($uuid) : Uuid::uuid4();
         $instance->name    = $name;
         $instance->address = $address;
 

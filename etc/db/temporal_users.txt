@@ -1,8 +1,0 @@
--- Table Definition ----------------------------------------------
-CREATE TABLE temporal_users (
-    uuuid uuid PRIMARY KEY,
-    user_uuid uuid NOT NULL REFERENCES users(uuid) ON DELETE CASCADE ON UPDATE CASCADE,
-    status character varying(15) NOT NULL,
-    data json NOT NULL,
-    created_at timestamp without time zone NOT NULL DEFAULT now()
-);

@@ -13,13 +13,16 @@ purge: ## Purge cache and logs
 
 ## —— Housfy Offices API ———————————————————————————————————————————————————————————
 install: ## Install vendors according to the current composer.lock file
-	composer install
+	docker exec officesphp bash -c "composer install"
 
 update: ## Update vendors according to the current composer.json file
-	composer update
-
-test-unit: phpunit.xml ## Launch all functional and unit tests inside docker container
-	docker exec officesphp bash -c "bin/phpunit --stop-on-failure --testdox"
+	docker exec officesphp bash -c "composer update"
 
 migrations: ## Load data to DB, ATTENTION!!: This Will remove all previous data
 	bin/console housfy:offices:migrations:load
+
+test-unit: phpunit.xml ## Launch all functional and unit tests inside docker container
+	docker exec officesphp bash -c "bin/phpunit --stop-on-failure --testdox --colors"
+
+test-functional:
+	docker exec officesphp bash -c "bin/codecept run functional"

@@ -23,7 +23,7 @@ services:
 
 
     officesphp:
-        image: eu.gcr.io/farmapremium-647cb/nanoninjaphp-dev
+        image: ruben4test/mguphpdev
         container_name: officesphp
         working_dir: "/web"
         environment:

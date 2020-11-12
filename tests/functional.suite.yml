@@ -1,0 +1,9 @@
+actor: FunctionalTester
+modules:
+    enabled:
+        - Asserts
+        - \Tests\Helper\Functional
+        - REST:
+              url: http://offices
+              depends: PhpBrowser
+              part: Json
