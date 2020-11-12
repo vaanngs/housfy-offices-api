@@ -21,8 +21,8 @@ update: ## Update vendors according to the current composer.json file
 migrations: ## Load data to DB, ATTENTION!!: This Will remove all previous data
 	bin/console housfy:offices:migrations:load
 
-test-unit: phpunit.xml ## Launch all functional and unit tests inside docker container
+test-unit: phpunit.xml ## Launch unit tests inside docker container
 	docker exec officesphp bash -c "bin/phpunit --stop-on-failure --testdox --colors"
 
-test-functional:
+test-functional: ## Launch functional tests inside docker container
 	docker exec officesphp bash -c "bin/codecept run functional"
