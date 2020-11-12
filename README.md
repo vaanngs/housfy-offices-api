@@ -26,13 +26,17 @@
 
 1. Create a local environment file (`cp .env .env.dist`)
 2. Configure XDEBUG section. There are examples for MAC Os & Linux.
-4. Install all dependencies with: `make install`
-5. Seed Database with fixtures (migrations) with: `make migrations`
+3. Create docker network `docker network create local_housfy_redis`
+4. Start docker container with `docker-compose up -d
+5. Install all dependencies with: `make install`
 
-### ✅ Tests execution
-
-1. Execute unit tests with: `make test-unit`. There is coverage provided on: `var/phpunit/html/index.html`
-2. Execute functional tests with: `make test-functional`
+### ✅ Migrations & Tests execution
+1. Before testing make sure you run the migrations.
+2. Enter php-fpm container by running the command `docker exec -it officesphp bash`
+3. Run migrations with `make migrations`
+4. Now exit container and go back to your project folder.
+5. Run unit tests with: `make test-unit`. There is coverage provided on: `var/phpunit/html/index.html`
+6. Run functional tests with: `make test-functional`
 
 ## 👩‍💻 Project explanation
 
