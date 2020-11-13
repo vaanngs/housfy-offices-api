@@ -50,4 +50,5 @@ a pre-commit hook.
 ## 👩‍💻 Project explanation
 
 This project tries to replicate a simple office API microservice. It's decoupled from any framework 
-(I use PHPSlim only in the UI layer) but it has Simfony libraries such as Doctrine & Console.
+(I use PHPSlim only in the UI layer) but it has Simfony libraries such as Doctrine (in order to access its
+ powerful ORM) & Console.
