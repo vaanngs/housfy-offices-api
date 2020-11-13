@@ -13,21 +13,20 @@ use Throwable;
 
 final class UpdateOfficeSpecificationTest extends TestCase
 {
-
     /**
      * @test
      */
     public function should_satisfy_request()
     {
         $request = RequestFactory::make('POST', [
-            Param::UUID => Uuid::uuid4()->toString(),
-            Param::OFFICE_NAME => 'Office Name Test',
+            Param::UUID           => Uuid::uuid4()->toString(),
+            Param::OFFICE_NAME    => 'Office Name Test',
             Param::OFFICE_ADDRESS => [[
                 Param::OFFICE_POSTALCODE   => '08840',
                 Param::OFFICE_PROVINCE     => 'Barcelona',
                 Param::OFFICE_CITY         => 'Gavà',
-                Param::OFFICE_ADDRESS_LINE => 'Passeig Marítim, 15'
-            ]]
+                Param::OFFICE_ADDRESS_LINE => 'Passeig Marítim, 15',
+            ]],
         ]);
 
         $specification = new UpdateOfficeSpecification();
@@ -43,7 +42,7 @@ final class UpdateOfficeSpecificationTest extends TestCase
     public function should_not_satisfy_request_when_uuid_is_invalid()
     {
         $request = RequestFactory::make('POST', [
-            Param::UUID => 'this is not an uuid'
+            Param::UUID => 'this is not an uuid',
         ]);
 
         $specification = new UpdateOfficeSpecification();
@@ -59,7 +58,7 @@ final class UpdateOfficeSpecificationTest extends TestCase
     public function should_not_satisfy_request_when_uuid_is_empty()
     {
         $request = RequestFactory::make('POST', [
-            Param::UUID => null
+            Param::UUID => null,
         ]);
 
         $specification = new UpdateOfficeSpecification();

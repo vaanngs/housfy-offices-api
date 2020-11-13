@@ -11,7 +11,6 @@ use Ramsey\Uuid\UuidInterface;
 
 final class OfficeFinder implements OfficeFinderInterface
 {
-
     /** @var OfficeSpecificationFactoryInterface */
     private $officeSpecFactory;
 
@@ -26,14 +25,20 @@ final class OfficeFinder implements OfficeFinderInterface
     public function __construct(
         OfficeSpecificationFactoryInterface $officeSpecFactory,
         OfficeRepositoryInterface $repository
-    )
-    {
+    ) {
         $this->officeSpecFactory = $officeSpecFactory;
         $this->repository        = $repository;
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
+    public function findAll(): iterable
+    {
+        return $this->repository->findAll();
+    }
+
+
+    /** {@inheritdoc} */
     public function findByUuid(UuidInterface $uuid): ?Office
     {
         $specification = $this->officeSpecFactory->createForFindWithUuid($uuid);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Api\Domain\ReadModel;
 
 use Api\Domain\Entities\Office;
@@ -7,7 +9,6 @@ use Api\Domain\Specification\Factory\SpecificationFactoryInterface;
 
 interface OfficeRepositoryInterface
 {
-
     /**
      * @return array
      */

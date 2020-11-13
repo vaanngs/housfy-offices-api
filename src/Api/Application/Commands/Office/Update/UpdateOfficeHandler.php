@@ -8,7 +8,6 @@ use Api\Domain\Service\Finders\Office\OfficeFinderInterface;
 
 final class UpdateOfficeHandler
 {
-
     /** @var OfficeFinderInterface */
     private $finder;
 

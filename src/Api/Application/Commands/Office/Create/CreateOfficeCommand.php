@@ -16,7 +16,6 @@ use Throwable;
 
 final class CreateOfficeCommand implements CommandInterface
 {
-
     /** @var OfficeName */
     private $name;
 

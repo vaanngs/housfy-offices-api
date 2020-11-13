@@ -10,11 +10,10 @@ use Psr\Container\ContainerInterface;
 
 class HousfyHandlerLocator implements HandlerLocator
 {
-
-    /** @var ContainerInterface  */
+    /** @var ContainerInterface */
     private $container;
 
-    /** @var string  */
+    /** @var string */
     private $suffix;
 
 

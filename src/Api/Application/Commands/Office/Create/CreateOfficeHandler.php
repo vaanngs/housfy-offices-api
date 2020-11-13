@@ -9,11 +9,10 @@ use Throwable;
 
 final class CreateOfficeHandler
 {
-
     /**
      * @param CreateOfficeCommand $command
-     * @return iterable
      * @throws Throwable
+     * @return iterable
      */
     public function __invoke(CreateOfficeCommand $command)
     {

@@ -5,29 +5,28 @@ declare(strict_types=1);
 namespace Api\Application\Commands\Office\FindAll;
 
 use Api\Application\Service\CacheService;
-use Api\Domain\Entities\Office;
-use Api\Domain\ReadModel\OfficeRepositoryInterface;
+use Api\Domain\Service\Finders\Office\OfficeFinderInterface;
+use Api\Domain\Shared\Param;
+use Api\Infrastructure\RabbitMQ\RabbitMqMessage;
 
 final class FindAllOfficesHandler
 {
-
-    /** @var OfficeRepositoryInterface */
-    private $repository;
+    /** @var OfficeFinderInterface */
+    private $finder;
 
     /** @var CacheService */
     private $cacheService;
 
 
     /**
-     * @param OfficeRepositoryInterface $repository
+     * @param OfficeFinderInterface $finder
      * @param CacheService $cacheService
      */
     public function __construct(
-        OfficeRepositoryInterface $repository,
+        OfficeFinderInterface $finder,
         CacheService $cacheService
-    )
-    {
-        $this->repository   = $repository;
+    ) {
+        $this->finder       = $finder;
         $this->cacheService = $cacheService;
     }
 
@@ -38,23 +37,25 @@ final class FindAllOfficesHandler
      */
     public function __invoke(FindAllOfficesCommand $command): iterable
     {
-        $result   = [];
         $cacheKey = $this->buildCacheKey();
+        $offices  = $this->cacheService->find($cacheKey);
 
-        $offices = $this->cacheService->find($cacheKey);
-
-        if (empty($cache)) {
-            $offices = $this->repository->findAll();
-
-            // todo publish to rabbitmq
-            //$rabbimq->publish($cacheKey, $offices, CacheService::FIVE_MINUTES_TTL);
-            //$this->cacheService->save();
+        if (!empty($offices)) {
+            return $offices;
         }
 
-        /** @var Office $office */
+        $offices = $this->finder->findAll();
+
+        $result = [];
         foreach ($offices as $office) {
             $result[] = $office->toRender();
         }
+
+        $this->cacheService->enQueue(new RabbitMqMessage([
+            Param::CACHE_KEY   => $cacheKey,
+            Param::CACHE_VALUE => $result,
+            Param::CACHE_TTL   => CacheService::FIVE_MINUTES_TTL,
+        ]));
 
         return $result;
     }
@@ -65,7 +66,7 @@ final class FindAllOfficesHandler
      */
     private function buildCacheKey(): string
     {
-        $classPathName = strtolower(str_replace('Handler', '', get_class($this)));
+        $classPathName = strtolower(str_replace('Handler', '', static::class));
         $classNamePos  = strrpos($classPathName, '\\');
 
         return substr($classPathName, $classNamePos + 1);

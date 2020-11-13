@@ -8,8 +8,8 @@ use Api\Domain\Event\Office\OfficeWasUpdated;
 
 $domainEvent = DomainEvent::instance()
     ->addSubscribers(OfficeWasCreated::class, [
-        $container['PersistEntity']
+        $container['PersistEntity'],
     ])
     ->addSubscribers(OfficeWasUpdated::class, [
-        $container['PersistEntity']
+        $container['PersistEntity'],
     ]);

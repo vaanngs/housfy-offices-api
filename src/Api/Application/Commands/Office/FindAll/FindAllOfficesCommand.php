@@ -8,5 +8,4 @@ use Api\Application\Commands\CommandInterface;
 
 final class FindAllOfficesCommand implements CommandInterface
 {
-
 }

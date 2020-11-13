@@ -11,7 +11,6 @@ use Doctrine\DBAL\Types\Type;
 
 final class EventPayloadType extends Type
 {
-
     const NAME = 'eventPayload';
 
 

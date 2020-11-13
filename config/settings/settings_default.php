@@ -34,7 +34,17 @@ return [
             'scheme' => 'tcp',
             'host'   => 'redis',
             'port'   => 6379,
-            'prefix' => 'housfy:offices:'
+            'prefix' => 'housfy:offices:',
+        ],
+
+        'rabbitMQ' => [
+            'host'     => $_ENV['RABBIT_HOST'],
+            'port'     => $_ENV['RABBIT_PORT'],
+            'user'     => $_ENV['RABBIT_USER'],
+            'pass'     => $_ENV['RABBIT_PASS'],
+            'queues'   => [
+                'findall-offices-query' => 'findall-offices-query',
+            ],
         ],
     ],
 ];

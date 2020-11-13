@@ -7,8 +7,8 @@ namespace Tests\Api\Application\Commands\Office\Update;
 use Api\Application\Commands\Office\Update\UpdateOfficeCommand;
 use Api\Application\Commands\Office\Update\UpdateOfficeHandler;
 use Api\Domain\Service\Finders\Office\OfficeFinderInterface;
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeName;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeName;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use Tests\Mock\FakeOfficeBuilder;
@@ -16,7 +16,6 @@ use Throwable;
 
 final class UpdateOfficeHandlerTest extends TestCase
 {
-
     /** @var OfficeFinderInterface */
     private $finder;
 

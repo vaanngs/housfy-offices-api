@@ -13,14 +13,13 @@ use Throwable;
 
 final class DeleteOfficeSpecificationTest extends TestCase
 {
-
     /**
      * @test
      */
     public function should_satisfy_request()
     {
         $request = RequestFactory::make('POST', [
-            Param::UUID => Uuid::uuid4()->toString()
+            Param::UUID => Uuid::uuid4()->toString(),
         ]);
 
         $specification = new DeleteOfficeSpecification();
@@ -35,7 +34,7 @@ final class DeleteOfficeSpecificationTest extends TestCase
     public function should_not_satisfy_request_when_uuid_is_invalid()
     {
         $request = RequestFactory::make('POST', [
-            Param::UUID => 'this is not an uuid'
+            Param::UUID => 'this is not an uuid',
         ]);
 
         $specification = new DeleteOfficeSpecification();
@@ -50,7 +49,7 @@ final class DeleteOfficeSpecificationTest extends TestCase
     public function should_not_satisfy_request_when_uuid_is_empty()
     {
         $request = RequestFactory::make('POST', [
-            Param::UUID => null
+            Param::UUID => null,
         ]);
 
         $specification = new DeleteOfficeSpecification();

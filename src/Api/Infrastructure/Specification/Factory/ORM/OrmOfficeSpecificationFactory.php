@@ -13,7 +13,6 @@ use Ramsey\Uuid\UuidInterface;
 
 final class OrmOfficeSpecificationFactory implements OfficeSpecificationFactoryInterface
 {
-
     /** @var Expr */
     private $expr;
 
@@ -27,7 +26,7 @@ final class OrmOfficeSpecificationFactory implements OfficeSpecificationFactoryI
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function createForFindWithUuid(UuidInterface $uuid): SpecificationFactoryInterface
     {
         return new OfficeWithUuid($this->expr, $uuid);

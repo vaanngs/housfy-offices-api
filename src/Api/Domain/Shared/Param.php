@@ -6,7 +6,6 @@ namespace Api\Domain\Shared;
 
 final class Param
 {
-
     const UUID                = 'uuid';
     const OFFICE_NAME         = 'name';
     const OFFICE_ADDRESS      = 'address';
@@ -14,4 +13,8 @@ final class Param
     const OFFICE_PROVINCE     = 'province';
     const OFFICE_CITY         = 'city';
     const OFFICE_ADDRESS_LINE = 'address_line';
+
+    const CACHE_KEY   = 'key';
+    const CACHE_VALUE = 'value';
+    const CACHE_TTL   = 'ttl';
 }

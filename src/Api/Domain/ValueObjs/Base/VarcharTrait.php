@@ -9,21 +9,20 @@ use Throwable;
 
 trait VarcharTrait
 {
-
-    /** @var string  */
+    /** @var string */
     protected $value;
 
 
     /**
      * @param string $string
-     * @return self
      * @throws Throwable
+     * @return self
      */
     protected static function fromStr(string $string): self
     {
         self::checkAssertion($string);
 
-        $instance = new static();
+        $instance        = new static();
         $instance->value = $string;
 
         return $instance;
@@ -32,8 +31,8 @@ trait VarcharTrait
 
     /**
      * @param string $string
-     * @return bool
      * @throws Throwable
+     * @return bool
      */
     public static function checkAssertion(string $string): bool
     {

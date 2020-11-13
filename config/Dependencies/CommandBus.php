@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Api\Application\Commands\Cache\SaveInCacheHandler;
 use Api\Application\Commands\Office\Create\CreateOfficeHandler;
 use Api\Application\Commands\Office\Delete\DeleteOfficeHandler;
 use Api\Application\Commands\Office\FindAll\FindAllOfficesHandler;
@@ -32,7 +33,7 @@ $container['CreateOfficeHandler'] = function (ContainerInterface $c): CreateOffi
 
 $container['FindAllOfficesHandler'] = function (ContainerInterface $c): FindAllOfficesHandler {
     return new FindAllOfficesHandler(
-        $c['OfficeRepository'],
+        $c['OfficeFinder'],
         $c['CacheService']
     );
 };
@@ -50,3 +51,8 @@ $container['DeleteOfficeHandler'] = function (ContainerInterface $c): DeleteOffi
     );
 };
 
+$container['SaveInCacheHandler'] = function (ContainerInterface $c): SaveInCacheHandler {
+    return new SaveInCacheHandler(
+        $c['CacheService']
+    );
+};

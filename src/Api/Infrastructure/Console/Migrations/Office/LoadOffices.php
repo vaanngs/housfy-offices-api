@@ -16,18 +16,17 @@ use Throwable;
 
 final class LoadOffices implements MigrationInterface
 {
-
     /**
-     * @return iterable
-     * @throws Throwable
+     * @throws throwable
      *
      * If we want to fake Address data we could create new methods on
-     * each Value Object to select a random value choice.
+     * each Value Object to select a random value choice
+     * @return iterable
      */
     public function load(): iterable
     {
         $result = [];
-        for ($counter = 49; $counter > 0; $counter--) {
+        for ($counter = 49; $counter > 0; --$counter) {
             $officeName    = OfficeName::fromString("Office Test {$counter}");
             $officeAddress = OfficeAddress::build(
                 OfficePostalcode::fromString('08840'),
@@ -36,13 +35,13 @@ final class LoadOffices implements MigrationInterface
                 OfficeAddressLine::fromString("C/ Miramar, nº{$counter}")
             );
 
-            $office = Office::create($officeName, $officeAddress);
+            $office   = Office::create($officeName, $officeAddress);
             $result[] = $office;
         }
 
         // This office is created only for running Functional test
         Office::create(
-            OfficeName::fromString("Office for Functional Testing"),
+            OfficeName::fromString('Office for Functional Testing'),
             OfficeAddress::build(
                 OfficePostalcode::fromString('08840'),
                 OfficeProvince::fromString('Barcelona'),

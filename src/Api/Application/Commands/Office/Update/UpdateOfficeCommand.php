@@ -18,7 +18,6 @@ use Throwable;
 
 final class UpdateOfficeCommand implements CommandInterface
 {
-
     /** @var UuidInterface */
     private $uuid;
 
@@ -42,19 +41,18 @@ final class UpdateOfficeCommand implements CommandInterface
         string $uuid,
         ?string $name,
         ?iterable $address
-    )
-    {
+    ) {
         $this->uuid    = Uuid::fromString($uuid);
         $this->name    = ($name) ? OfficeName::fromString($name) : null;
         $this->address = (!empty($address)) ? $this->buildAddress($address) : null;
-        
+
         if (!empty($address)) {
             $this->buildAddress($address);
         }
 
         $this->params = [
            'name'    => $this->name,
-           'address' => $this->address
+           'address' => $this->address,
         ];
     }
 
@@ -97,8 +95,8 @@ final class UpdateOfficeCommand implements CommandInterface
 
     /**
      * @param iterable $address
-     * @return OfficeAddress
      * @throws Throwable
+     * @return OfficeAddress
      */
     private function buildAddress(iterable $address): OfficeAddress
     {

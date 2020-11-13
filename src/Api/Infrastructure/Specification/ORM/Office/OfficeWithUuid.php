@@ -11,7 +11,6 @@ use Ramsey\Uuid\UuidInterface;
 
 final class OfficeWithUuid extends OrmSpecification
 {
-
     /**
      * OfficeWithUuid constructor.
      * @param Expr $expr
@@ -25,7 +24,7 @@ final class OfficeWithUuid extends OrmSpecification
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getConditions()
     {
         return $this->expr->eq(Office::ALIAS . '.uuid', ':uuid');

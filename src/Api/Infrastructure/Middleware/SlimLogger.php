@@ -13,14 +13,12 @@ use Psr\Log\LoggerInterface;
 
 final class SlimLogger
 {
-
     /**
      * @return Closure
      */
     public static function containerLoader(): Closure
     {
-        return function (ContainerInterface $container): LoggerInterface
-        {
+        return function (ContainerInterface $container): LoggerInterface {
             $settings = $container->get('settings')['logger'];
             $logger   = new Logger($settings['name']);
             $logger->pushProcessor(new UidProcessor());

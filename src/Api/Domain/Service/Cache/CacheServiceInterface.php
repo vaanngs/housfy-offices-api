@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Api\Domain\Service\Cache;
+
+use Api\Domain\Event\Bus\MessageToEnqueueInterface;
 
 interface CacheServiceInterface
 {
-
     const FIVE_MINUTES_TTL = 300;
     const ONE_DAY_TTL      = 86400;
     const ONE_WEEK_TTL     = 604800;
@@ -32,4 +35,11 @@ interface CacheServiceInterface
      * @return int
      */
     public function delete(array $keys): int;
+
+
+    /**
+     * @param MessageToEnqueueInterface $message
+     * @return bool
+     */
+    public function enQueue(MessageToEnqueueInterface $message): bool;
 }

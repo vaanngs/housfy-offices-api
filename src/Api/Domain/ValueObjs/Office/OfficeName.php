@@ -9,7 +9,6 @@ use Throwable;
 
 final class OfficeName
 {
-
     const MAX_LENGTH = 75;
 
     use VarcharTrait;
@@ -17,10 +16,10 @@ final class OfficeName
 
     /**
      * @param string $name
-     * @return OfficeName
      * @throws Throwable
+     * @return OfficeName
      */
-    public static function fromString(string $name): OfficeName
+    public static function fromString(string $name): self
     {
         return self::fromStr($name);
     }

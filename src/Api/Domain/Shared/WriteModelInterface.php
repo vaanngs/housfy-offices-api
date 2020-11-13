@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Api\Domain\Shared;
 
 interface WriteModelInterface
 {
-
     /**
      * @param $entity
      */

@@ -10,7 +10,6 @@ use Ramsey\Uuid\UuidInterface;
 
 final class DeleteOfficeCommand implements CommandInterface
 {
-
     /** @var UuidInterface */
     private $uuid;
 

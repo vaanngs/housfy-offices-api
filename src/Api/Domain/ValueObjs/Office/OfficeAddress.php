@@ -8,7 +8,6 @@ use Api\Domain\Shared\Param;
 
 final class OfficeAddress
 {
-
     /** @var OfficePostalcode|null */
     private $postalcode;
 
@@ -30,12 +29,11 @@ final class OfficeAddress
      * @return OfficeAddress
      */
     public static function build(
-        ?OfficePostalcode  $postalcode,
-        ?OfficeProvince    $province,
-        ?OfficeCity        $city,
+        ?OfficePostalcode $postalcode,
+        ?OfficeProvince $province,
+        ?OfficeCity $city,
         ?OfficeAddressLine $addressLine
-    ): OfficeAddress
-    {
+    ): self {
         $instance = new static();
 
         $instance->postalcode  = $postalcode;
@@ -61,7 +59,7 @@ final class OfficeAddress
             Param::OFFICE_POSTALCODE   => $this->getPostalcode()->toStr(),
             Param::OFFICE_PROVINCE     => $this->getProvince()->toStr(),
             Param::OFFICE_CITY         => $this->getCity()->toStr(),
-            Param::OFFICE_ADDRESS_LINE => $this->getAddressLine()->toStr()
+            Param::OFFICE_ADDRESS_LINE => $this->getAddressLine()->toStr(),
         ];
     }
 

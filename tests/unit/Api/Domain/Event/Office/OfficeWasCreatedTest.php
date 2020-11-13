@@ -11,7 +11,6 @@ use Tests\Mock\FakeOfficeBuilder;
 
 final class OfficeWasCreatedTest extends TestCase
 {
-
     /**
      * @test
      */

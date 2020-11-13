@@ -15,7 +15,6 @@ use Throwable;
 
 final class UpdateOfficeController extends AbstractController
 {
-
     /**
      * @OA\Put(
      *     path="/v1/offices",
@@ -89,8 +88,8 @@ final class UpdateOfficeController extends AbstractController
      *
      * @param Request   $request
      * @param Response  $response
-     * @return Response
      * @throws Throwable
+     * @return Response
      */
     public function update(Request $request, Response $response): Response
     {

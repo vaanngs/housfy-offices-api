@@ -14,7 +14,6 @@ use Throwable;
 
 final class CreateOfficeController extends AbstractController
 {
-
     /**
      * @OA\Post(
      *     path="/v1/offices",
@@ -80,8 +79,8 @@ final class CreateOfficeController extends AbstractController
      *
      * @param Request   $request
      * @param Response  $response
-     * @return Response
      * @throws Throwable
+     * @return Response
      */
     public function create(Request $request, Response $response): Response
     {
@@ -104,7 +103,6 @@ final class CreateOfficeController extends AbstractController
             $office = $this->handler($command);
 
             return $response->withJson($office, StatusCode::HTTP_CREATED);
-            
         } catch (\Exception $exception) {
             return $response->withStatus($exception->getCode(), $exception->getMessage());
         }

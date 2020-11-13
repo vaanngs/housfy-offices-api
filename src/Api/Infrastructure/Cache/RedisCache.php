@@ -12,8 +12,7 @@ use Predis\ClientInterface;
 
 final class RedisCache implements CacheInterface
 {
-
-    /** @var RedisClient|null  */
+    /** @var RedisClient|null */
     private static $redis = null;
 
     /** @var bool */
@@ -49,7 +48,7 @@ final class RedisCache implements CacheInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function set(string $key, $data, string $expireType, int $ttl): void
     {
         try {
@@ -62,7 +61,7 @@ final class RedisCache implements CacheInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function get(string $key)
     {
         try {
@@ -74,6 +73,7 @@ final class RedisCache implements CacheInterface
             }
         } catch (Exception $exception) {
             $this->available = false;
+
             throw new CacheException('Redis not available', $exception->getCode());
         }
 
@@ -81,7 +81,7 @@ final class RedisCache implements CacheInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function remove(array $keys = []): int
     {
         if (empty($keys)) {

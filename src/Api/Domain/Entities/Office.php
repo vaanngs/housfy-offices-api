@@ -16,7 +16,6 @@ use Ramsey\Uuid\UuidInterface;
 
 final class Office extends EntityEvent
 {
-
     const ALIAS = 'o';
 
     /** @var UuidInterface */
@@ -33,15 +32,14 @@ final class Office extends EntityEvent
      * @param OfficeName $name
      * @param OfficeAddress $address
      * @param string|null $uuid
-     * @return static
      * @throws Exception
+     * @return static
      */
     public static function create(
         OfficeName $name,
         OfficeAddress $address,
         ?string $uuid = null
-    )
-    {
+    ) {
         $instance = new static();
 
         $instance->uuid    = (!empty($uuid)) ? Uuid::fromString($uuid) : Uuid::uuid4();
@@ -58,7 +56,7 @@ final class Office extends EntityEvent
      * @param iterable $params
      * @return $this
      */
-    public function update(iterable $params): Office
+    public function update(iterable $params): self
     {
         $oldOffice  = clone $this;
         $properties = get_object_vars($this);
@@ -116,9 +114,9 @@ final class Office extends EntityEvent
     public function toRender(): iterable
     {
         return [
-            Param::UUID => $this->getUuid()->toString(),
-            Param::OFFICE_NAME => $this->getName()->toStr(),
-            Param::OFFICE_ADDRESS => $this->getAddress()->toRender()
+            Param::UUID           => $this->getUuid()->toString(),
+            Param::OFFICE_NAME    => $this->getName()->toStr(),
+            Param::OFFICE_ADDRESS => $this->getAddress()->toRender(),
         ];
     }
 
@@ -127,7 +125,7 @@ final class Office extends EntityEvent
      * @param OfficeAddress $address
      * @return $this
      */
-    public function setAddress(OfficeAddress $address): Office
+    public function setAddress(OfficeAddress $address): self
     {
         $postalcode = ($address->getPostalcode())
             ? $address->getPostalcode()
@@ -151,7 +149,7 @@ final class Office extends EntityEvent
             $city,
             $addressLine
         );
-        
+
         return $this;
     }
 

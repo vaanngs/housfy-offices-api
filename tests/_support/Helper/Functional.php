@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Helper;
 
 // here you can define custom actions
@@ -7,5 +9,4 @@ namespace Tests\Helper;
 
 class Functional extends \Codeception\Module
 {
-
 }

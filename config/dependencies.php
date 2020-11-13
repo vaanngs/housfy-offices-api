@@ -12,3 +12,4 @@ require_once 'Dependencies/Doctrine.php';
 require_once 'Dependencies/Subscribers.php';
 require_once 'Dependencies/Specifications.php';
 require_once 'Dependencies/Services.php';
+require_once 'Dependencies/RabbitMQ.php';

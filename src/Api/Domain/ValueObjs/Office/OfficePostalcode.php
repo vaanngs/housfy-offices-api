@@ -9,7 +9,6 @@ use Throwable;
 
 final class OfficePostalcode
 {
-
     const POSTAL_CODE_PATTERN = '~^\d{5}$~';
 
     /** @var string */
@@ -18,14 +17,14 @@ final class OfficePostalcode
 
     /**
      * @param string $postalcode
-     * @return OfficePostalcode
      * @throws Throwable
+     * @return OfficePostalcode
      */
-    public static function fromString(string $postalcode): OfficePostalcode
+    public static function fromString(string $postalcode): self
     {
         self::checkAssertion($postalcode);
 
-        $instance = new static();
+        $instance             = new static();
         $instance->postalcode = $postalcode;
 
         return $instance;
@@ -34,8 +33,8 @@ final class OfficePostalcode
 
     /**
      * @param string $postalcode
-     * @return bool
      * @throws Throwable
+     * @return bool
      */
     public static function checkAssertion(string $postalcode): bool
     {

@@ -8,5 +8,4 @@ use RedisException;
 
 class CacheException extends RedisException
 {
-
 }

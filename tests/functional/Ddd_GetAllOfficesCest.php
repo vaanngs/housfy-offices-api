@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use Codeception\Util\HttpCode;
 
-class GetAllOfficesCest
+class Ddd_GetAllOfficesCest
 {
-
     private $json_decode;
 
     public function _before(FunctionalTester $I)
@@ -36,14 +37,14 @@ class GetAllOfficesCest
     private function testEachOffice(FunctionalTester $I)
     {
         $I->seeResponseMatchesJsonType([
-            'uuid' => 'string',
-            'name' => 'string',
+            'uuid'    => 'string',
+            'name'    => 'string',
             'address' => [
                 'postalcode'   => 'string',
                 'province'     => 'string',
                 'city'         => 'string',
                 'address_line' => 'string',
-            ]
+            ],
         ], '$.*');
 
         $I->assertCount(3, $this->json_decode[0]);

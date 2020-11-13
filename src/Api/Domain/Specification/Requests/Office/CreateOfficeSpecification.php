@@ -17,8 +17,7 @@ use Throwable;
 
 final class CreateOfficeSpecification implements RequestSpecificationInterface
 {
-
-    /** @inheritDoc
+    /** {@inheritdoc}
      * @throws Throwable
      */
     public function isSatisfiedBy(RequestInterface $request): bool

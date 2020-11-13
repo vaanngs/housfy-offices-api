@@ -1,6 +1,6 @@
 {
     "commit-msg": {
-        "enabled": true,
+        "enabled": false,
         "actions": []
     },
     "pre-push": {
@@ -11,7 +11,7 @@
         "enabled": true,
         "actions": [
             {
-                "action": "docker-compose run officesphp bash -c 'make cs-fix'",
+                "action": "make cs-fix",
                 "options": [],
                 "conditions": []
             },
@@ -21,7 +21,7 @@
                 "conditions": []
             },
             {
-                "action": "docker-compose run officesphp bash -c 'make precommit-test'",
+                "action": "make precommit-test",
                 "options": [],
                 "conditions": []
             }

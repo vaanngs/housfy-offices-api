@@ -12,7 +12,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class OfficeRepository extends ReadModel implements OfficeRepositoryInterface
 {
-
     /**
      * @param EntityManagerInterface $entityManager
      */
@@ -24,7 +23,7 @@ final class OfficeRepository extends ReadModel implements OfficeRepositoryInterf
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function findAll(): array
     {
         $builder = $this->createOrmQueryBuilder();
@@ -40,7 +39,7 @@ final class OfficeRepository extends ReadModel implements OfficeRepositoryInterf
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getOneOrNull(SpecificationFactoryInterface $specification): ?Office
     {
         $builder = $this->createOrmQueryBuilder();

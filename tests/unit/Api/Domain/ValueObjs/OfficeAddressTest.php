@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace Tests\Api\Domain\ValueObjs;
 
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeAddressLine;
-use Api\Domain\ValueObjs\OfficeCity;
-use Api\Domain\ValueObjs\OfficePostalcode;
-use Api\Domain\ValueObjs\OfficeProvince;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeAddressLine;
+use Api\Domain\ValueObjs\Office\OfficeCity;
+use Api\Domain\ValueObjs\Office\OfficePostalcode;
+use Api\Domain\ValueObjs\Office\OfficeProvince;
 use PHPUnit\Framework\TestCase;
 
 final class OfficeAddressTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -21,7 +20,7 @@ final class OfficeAddressTest extends TestCase
     {
         $address = OfficeAddress::build(
             OfficePostalcode::fromString('08840'),
-            OfficeProvince::fromString("Barcelona"),
+            OfficeProvince::fromString('Barcelona'),
             OfficeCity::fromString('Gavà'),
             OfficeAddressLine::fromString('Av. Passeig Maritim, 105')
         );

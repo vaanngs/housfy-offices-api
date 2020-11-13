@@ -14,7 +14,6 @@ use Ramsey\Uuid\UuidInterface;
 
 final class OfficeWasCreated extends AbstractEvent implements EventInterface
 {
-
     /** @var UuidInterface */
     private $uuid;
 
@@ -38,20 +37,20 @@ final class OfficeWasCreated extends AbstractEvent implements EventInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function index(): string
     {
         return $this->uuid->toString();
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function payload(): array
     {
         return [
             Param::UUID           => $this->uuid->toString(),
             Param::OFFICE_NAME    => $this->name->toStr(),
-            Param::OFFICE_ADDRESS => $this->address->toRender()
+            Param::OFFICE_ADDRESS => $this->address->toRender(),
         ];
     }
 }

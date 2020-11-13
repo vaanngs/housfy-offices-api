@@ -37,7 +37,8 @@
         "symfony/process": "5.1.*",
         "swagger-api/swagger-ui": "^3.21",
         "zendframework/zend-stdlib": "^3.2",
-        "zircote/swagger-php": "3.0.3"
+        "zircote/swagger-php": "3.0.3",
+        "php-amqplib/php-amqplib": "2.11.*"
     },
     "require-dev": {
         "captainhook/captainhook": "^5.4",

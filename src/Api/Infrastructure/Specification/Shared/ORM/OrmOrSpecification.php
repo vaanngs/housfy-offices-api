@@ -9,7 +9,6 @@ use Doctrine\ORM\Query\Expr;
 
 class OrmOrSpecification extends OrmSpecification
 {
-
     /** @var SpecificationFactoryInterface */
     private $left;
 

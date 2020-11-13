@@ -6,11 +6,9 @@ namespace Api\Infrastructure\Doctrine\Model;
 
 use Api\Domain\Shared\WriteModelInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Log\LoggerInterface;
 
 class WriteModel implements WriteModelInterface
 {
-
     /** @var EntityManagerInterface */
     private $manager;
 
@@ -24,14 +22,14 @@ class WriteModel implements WriteModelInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function preSave($entity): void
     {
         $this->manager->persist($entity);
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function save($entity = null): void
     {
         if ($entity) {
@@ -42,7 +40,7 @@ class WriteModel implements WriteModelInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function update($entity = null): void
     {
         if ($entity) {
@@ -53,7 +51,7 @@ class WriteModel implements WriteModelInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function delete($entity): void
     {
         $this->manager->remove($entity);

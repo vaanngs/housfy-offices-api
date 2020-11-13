@@ -9,7 +9,6 @@ use Throwable;
 
 final class EventName
 {
-
     const MAX_LENGTH = 255;
 
     use VarcharTrait;
@@ -17,8 +16,8 @@ final class EventName
 
     /**
      * @param string $name
-     * @return static
      * @throws Throwable
+     * @return static
      */
     public static function fromString(string $name): self
     {

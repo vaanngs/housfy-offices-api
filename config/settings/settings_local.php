@@ -26,7 +26,7 @@ return [
             'scheme' => 'tcp',
             'host'   => $_ENV['REDIS_HOST'],
             'port'   => 6379,
-            'prefix' => 'housfy:offices:'
+            'prefix' => 'housfy:offices:',
         ],
     ],
 ];

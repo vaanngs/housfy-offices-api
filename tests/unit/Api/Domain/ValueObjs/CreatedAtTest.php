@@ -20,7 +20,7 @@ final class CreatedAtTest extends TestCase
         $createdAt = CreatedAt::now();
         self::assertInstanceOf(CreatedAt::class, $createdAt);
         self::assertInstanceOf(DateTimeImmutable::class, $createdAt->toDateTime());
-        self::assertIsString((string)$createdAt);
+        self::assertIsString((string) $createdAt);
     }
 
 
@@ -32,7 +32,7 @@ final class CreatedAtTest extends TestCase
         $createdAt = CreatedAt::fromStr('2020-01-24 07:00:00');
         self::assertInstanceOf(CreatedAt::class, $createdAt);
         self::assertInstanceOf(DateTimeImmutable::class, $createdAt->toDateTime());
-        self::assertIsString((string)$createdAt);
+        self::assertIsString((string) $createdAt);
     }
 
 
@@ -44,7 +44,7 @@ final class CreatedAtTest extends TestCase
         $createdAt = CreatedAt::fromDateTime(new DateTime());
         self::assertInstanceOf(CreatedAt::class, $createdAt);
         self::assertInstanceOf(DateTimeImmutable::class, $createdAt->toDateTime());
-        self::assertIsString((string)$createdAt);
+        self::assertIsString((string) $createdAt);
     }
 
 

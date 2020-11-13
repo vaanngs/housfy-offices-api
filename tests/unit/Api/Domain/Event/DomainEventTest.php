@@ -12,7 +12,6 @@ use PHPUnit\Framework\TestCase;
 
 class DomainEventTest extends TestCase implements DomainEventSubscriberInterface, EventInterface
 {
-
     private $spyCounter = 0;
 
 

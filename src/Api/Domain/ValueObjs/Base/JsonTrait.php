@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Api\Domain\ValueObjs\Base;
 
 use Assert\Assertion;
-use JsonException;
 use Throwable;
 
 trait JsonTrait
@@ -16,8 +15,8 @@ trait JsonTrait
 
     /**
      * @param string[] $vars
-     * @return self
      * @throws Throwable
+     * @return self
      */
     public static function fromArray(array $vars): self
     {
@@ -33,10 +32,6 @@ trait JsonTrait
 
         $instance         = new static();
         $instance->values = json_decode($json, true);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            throw  new JsonException(json_last_error_msg());
-        }
 
         return $instance;
     }

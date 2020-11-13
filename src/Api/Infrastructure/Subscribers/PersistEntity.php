@@ -14,8 +14,7 @@ use Ramsey\Uuid\Uuid;
 
 final class PersistEntity implements DomainEventSubscriberInterface
 {
-
-    /** @var WriteModelInterface  */
+    /** @var WriteModelInterface */
     private $writeModel;
 
 

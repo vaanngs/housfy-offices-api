@@ -9,7 +9,6 @@ use Api\Domain\Shared\WriteModelInterface;
 
 final class DeleteOfficeHandler
 {
-
     /** @var OfficeFinderInterface */
     private $finder;
 
@@ -24,8 +23,7 @@ final class DeleteOfficeHandler
     public function __construct(
         OfficeFinderInterface $finder,
         WriteModelInterface $writeModel
-    )
-    {
+    ) {
         $this->finder     = $finder;
         $this->writeModel = $writeModel;
     }

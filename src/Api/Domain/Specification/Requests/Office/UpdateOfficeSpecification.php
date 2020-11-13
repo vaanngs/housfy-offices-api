@@ -17,8 +17,7 @@ use Throwable;
 
 final class UpdateOfficeSpecification implements RequestSpecificationInterface
 {
-
-    /** @inheritDoc
+    /** {@inheritdoc}
      * @throws Throwable
      */
     public function isSatisfiedBy(RequestInterface $request): bool
@@ -45,7 +44,6 @@ final class UpdateOfficeSpecification implements RequestSpecificationInterface
             }
 
             return true;
-
         } catch (\Exception $exception) {
             return false;
         }

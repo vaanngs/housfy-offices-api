@@ -15,7 +15,6 @@ use Throwable;
 
 final class DeleteOfficeController extends AbstractController
 {
-
     /**
      * @OA\Delete(
      *     path="/v1/offices",
@@ -57,8 +56,8 @@ final class DeleteOfficeController extends AbstractController
      *
      * @param Request $request
      * @param Response $response
-     * @return Response
      * @throws Throwable
+     * @return Response
      */
     public function delete(Request $request, Response $response): Response
     {
@@ -79,7 +78,6 @@ final class DeleteOfficeController extends AbstractController
             }
 
             return $response->withStatus(StatusCode::HTTP_NO_CONTENT);
-
         } catch (Exception $exception) {
             return $response->withJson($exception->getMessage(), $exception->getCode());
         }

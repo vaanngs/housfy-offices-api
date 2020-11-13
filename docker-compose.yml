@@ -56,8 +56,6 @@ services:
             MYSQL_PASSWORD: ${MARIADB_PASSWORD}
         ports:
             - ${MARIADB_PORT}:3306
-        volumes:
-            - mariadb_data:/var/lib/mysql
 
 
     local_housfy_adminer:
@@ -80,8 +78,20 @@ services:
         container_name: local_housfy_redis
         ports:
             - ${REDIS_PORT}:6379
-        volumes:
-            - redis_data:/data
+
+
+    local_housfy_rabbitmq:
+        container_name: local_housfy_rabbitmq
+        image: rabbitmq:3-management-alpine
+        restart: on-failure
+        environment:
+            RABBITMQ_ERLANG_COOKIE: ${RABBIT_COOKIE}
+            RABBITMQ_DEFAULT_USER: ${RABBIT_USER}
+            RABBITMQ_DEFAULT_PASS: ${RABBIT_PASS}
+            RABBITMQ_DEFAULT_VHOST: "/"
+        ports:
+            - ${WEB_RABBIT_PORT}:15672
+            - ${RABBIT_PORT}:5672
 
 
 volumes:

@@ -11,25 +11,24 @@ use Doctrine\DBAL\Types\Type;
 
 final class EventNameType extends Type
 {
-
     const NAME = 'eventName';
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getName(): string
     {
         return static::NAME;
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
     {
         return sprintf('varchar(%d)', EventName::MAX_LENGTH);
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?EventName
     {
         if (null == $value || $value instanceof EventName) {
@@ -40,7 +39,7 @@ final class EventNameType extends Type
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
         if (null == $value) {
@@ -55,7 +54,7 @@ final class EventNameType extends Type
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;

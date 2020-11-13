@@ -6,14 +6,12 @@ namespace Tests\Api\Application\Commands\Office\Create;
 
 use Api\Application\Commands\Office\Create\CreateOfficeCommand;
 use Api\Application\Commands\Office\Create\CreateOfficeHandler;
-use Api\Domain\ValueObjs\OfficeName;
 use PHPUnit\Framework\TestCase;
 use Tests\Mock\FakeOfficeBuilder;
 use Throwable;
 
 final class CreateOfficeHandlerTest extends TestCase
 {
-
     /**
      * @test
      * @throws Throwable

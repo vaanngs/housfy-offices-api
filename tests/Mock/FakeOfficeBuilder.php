@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace Tests\Mock;
 
 use Api\Domain\Entities\Office;
-use Api\Domain\ValueObjs\OfficeAddress;
-use Api\Domain\ValueObjs\OfficeAddressLine;
-use Api\Domain\ValueObjs\OfficeCity;
-use Api\Domain\ValueObjs\OfficeName;
-use Api\Domain\ValueObjs\OfficePostalcode;
-use Api\Domain\ValueObjs\OfficeProvince;
+use Api\Domain\ValueObjs\Office\OfficeAddress;
+use Api\Domain\ValueObjs\Office\OfficeAddressLine;
+use Api\Domain\ValueObjs\Office\OfficeCity;
+use Api\Domain\ValueObjs\Office\OfficeName;
+use Api\Domain\ValueObjs\Office\OfficePostalcode;
+use Api\Domain\ValueObjs\Office\OfficeProvince;
 use Throwable;
 
 final class FakeOfficeBuilder
 {
-
     /**
-     * @return Office
      * @throws Throwable
+     * @return Office
      */
     public static function makeCreate()
     {
@@ -26,7 +25,7 @@ final class FakeOfficeBuilder
             OfficeName::fromString('Office Fake Name'),
             OfficeAddress::build(
                 OfficePostalcode::fromString('08840'),
-                OfficeProvince::fromString("Barcelona"),
+                OfficeProvince::fromString('Barcelona'),
                 OfficeCity::fromString('Gavà'),
                 OfficeAddressLine::fromString('Av. Passeig Maritim, 105')
             )
@@ -35,8 +34,8 @@ final class FakeOfficeBuilder
 
 
     /**
-     * @return Office
      * @throws Throwable
+     * @return Office
      */
     public static function makeUpdate()
     {
@@ -44,7 +43,7 @@ final class FakeOfficeBuilder
             OfficeName::fromString('Office Fake Name Updated'),
             OfficeAddress::build(
                 OfficePostalcode::fromString('08841'),
-                OfficeProvince::fromString("Barcelona Updated"),
+                OfficeProvince::fromString('Barcelona Updated'),
                 OfficeCity::fromString('Gavà Updated'),
                 OfficeAddressLine::fromString('Av. Passeig Maritim, 105 Updated')
             )

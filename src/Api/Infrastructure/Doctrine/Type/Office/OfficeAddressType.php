@@ -16,25 +16,24 @@ use Throwable;
 
 final class OfficeAddressType extends Type
 {
-
     const NAME = 'officeAddress';
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getName()
     {
         return static::NAME;
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
     {
         return 'varchar(255)';
     }
 
 
-    /** @inheritDoc
+    /** {@inheritdoc}
      * @throws Throwable
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?OfficeAddress
@@ -65,7 +64,8 @@ final class OfficeAddressType extends Type
         }
 
         if ($value instanceof OfficeAddress) {
-            return sprintf('%s:%s:%s:%s',
+            return sprintf(
+                '%s:%s:%s:%s',
                 $value->getPostalcode(),
                 $value->getProvince(),
                 $value->getCity(),
@@ -77,7 +77,7 @@ final class OfficeAddressType extends Type
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;

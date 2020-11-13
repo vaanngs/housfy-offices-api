@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use Codeception\Util\HttpCode;
 
 class Aaa_CreateOfficeCest
 {
-
     private $json_decode;
 
     public function _before(FunctionalTester $I)
@@ -20,13 +21,13 @@ class Aaa_CreateOfficeCest
     public function shouldCreateAnOffice(FunctionalTester $I)
     {
         $I->sendPost('/v1/offices', [
-            'name' => 'Housfy Madrid' . uniqid(),
+            'name'    => 'Housfy Madrid' . uniqid(),
             'address' => [[
                 'postalcode'   => '02742',
                 'province'     => 'Madrid',
                 'city'         => 'Madrid',
-                'address_line' => 'C/ Gran vía, 109'
-            ]]
+                'address_line' => 'C/ Gran vía, 109',
+            ]],
         ]);
 
         $I->seeResponseCodeIs(HttpCode::CREATED);
@@ -45,14 +46,14 @@ class Aaa_CreateOfficeCest
     private function testNewOffice(FunctionalTester $I)
     {
         $I->seeResponseMatchesJsonType([
-            'uuid' => 'string',
-            'name' => 'string',
+            'uuid'    => 'string',
+            'name'    => 'string',
             'address' => [
                 'postalcode'   => 'string',
                 'province'     => 'string',
                 'city'         => 'string',
                 'address_line' => 'string',
-            ]
+            ],
         ]);
 
         $I->assertCount(3, $this->json_decode);

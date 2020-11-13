@@ -12,7 +12,6 @@ use Slim\Http\StatusCode;
 
 final class GetAllOfficesController extends AbstractController
 {
-
     /**
      * @OA\Get(
      *     path="/v1/offices",

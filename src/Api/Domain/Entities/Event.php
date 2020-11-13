@@ -10,9 +10,8 @@ use Api\Domain\ValueObjs\Event\EventName;
 use Api\Domain\ValueObjs\Event\EventPayload;
 use Ramsey\Uuid\UuidInterface;
 
-final class Event extends EntityEvent
+class Event extends EntityEvent
 {
-
     const ALIAS = 'ev';
 
     /** @var UuidInterface */
@@ -28,15 +27,15 @@ final class Event extends EntityEvent
     /**
      * @param UuidInterface $uuid
      * @param EventInterface $event
-     * @return Event
      * @throws
+     * @return Event
      */
     public static function create(UuidInterface $uuid, EventInterface $event): self
     {
         $instance = new static();
 
         $instance->uuid      = $uuid;
-        $instance->name      = EventName::fromString($event::eventName());
+        $instance->name      = EventName::fromString($event->eventName());
         $instance->payload   = EventPayload::fromJson($event->serialize());
 
         return $instance;

@@ -14,7 +14,6 @@ use Ramsey\Uuid\UuidInterface;
 
 final class OfficeWasUpdated extends AbstractEvent implements EventInterface
 {
-
     /** @var UuidInterface */
     private $uuid;
 
@@ -50,28 +49,28 @@ final class OfficeWasUpdated extends AbstractEvent implements EventInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function index(): string
     {
         return $this->uuid->toString();
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function payload(): array
     {
         return [
             Param::UUID => $this->uuid->toString(),
-            'values' => [
+            'values'    => [
                 Param::OFFICE_NAME => [
                     'old' => $this->oldName->toStr(),
-                    'new' => $this->newName->toStr()
+                    'new' => $this->newName->toStr(),
                 ],
                 Param::OFFICE_ADDRESS => [
                     'old' => $this->oldAddress->toRender(),
-                    'new' => $this->newAddress->toRender()
-                ]
-            ]
+                    'new' => $this->newAddress->toRender(),
+                ],
+            ],
         ];
     }
 }

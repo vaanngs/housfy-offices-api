@@ -10,7 +10,6 @@ use Doctrine\Persistence\ObjectRepository;
 
 abstract class ReadModel
 {
-
     /** @var string */
     protected $class;
 

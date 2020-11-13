@@ -11,7 +11,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class LoadMigrationsCommand extends CliCommand
 {
-
     /** @var MigrationInterface */
     private $officeLoader;
 
@@ -27,9 +26,7 @@ class LoadMigrationsCommand extends CliCommand
     }
 
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function configure()
     {
         $this
@@ -38,9 +35,7 @@ class LoadMigrationsCommand extends CliCommand
     }
 
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         exec('./bin/console orm:schema-tool:drop --force');

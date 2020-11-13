@@ -11,25 +11,24 @@ use Doctrine\DBAL\Types\Type;
 
 final class OfficeNameType extends Type
 {
-
     const NAME = 'officeName';
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getName(): string
     {
         return static::NAME;
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
     {
         return sprintf('varchar(%d)', OfficeName::MAX_LENGTH);
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?OfficeName
     {
         if (null == $value || $value instanceof OfficeName) {
@@ -58,7 +57,7 @@ final class OfficeNameType extends Type
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;

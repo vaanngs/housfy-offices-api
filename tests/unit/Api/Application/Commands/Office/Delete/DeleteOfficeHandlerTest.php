@@ -15,7 +15,6 @@ use Throwable;
 
 final class DeleteOfficeHandlerTest extends TestCase
 {
-
     /** @var OfficeFinderInterface */
     private $finder;
 

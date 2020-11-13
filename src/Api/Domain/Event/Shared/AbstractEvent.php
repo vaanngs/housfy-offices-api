@@ -8,7 +8,6 @@ use Api\Domain\ValueObjs\Base\CreatedAt;
 
 abstract class AbstractEvent implements EventInterface
 {
-
     /** @var CreatedAt */
     public $occurredOn;
 

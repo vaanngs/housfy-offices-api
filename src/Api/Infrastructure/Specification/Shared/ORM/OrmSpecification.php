@@ -28,32 +28,32 @@ abstract class OrmSpecification implements SpecificationFactoryInterface
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     abstract public function getConditions();
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getParameters(): array
     {
         return $this->parameters;
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function getTypes(): array
     {
         return $this->types;
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function andX(SpecificationFactoryInterface $specification): SpecificationFactoryInterface
     {
         return new OrmAndSpecification($this->expr, $this, $specification);
     }
 
 
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function orX(SpecificationFactoryInterface $specification): SpecificationFactoryInterface
     {
         return new OrmOrSpecification($this->expr, $this, $specification);

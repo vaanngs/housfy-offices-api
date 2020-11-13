@@ -17,6 +17,7 @@ $container['OfficeFinder'] = function (ContainerInterface $c): OfficeFinderInter
 
 $container['CacheService'] = function (ContainerInterface $c): CacheServiceInterface {
     return new CacheService(
-        $c['RedisCache']
+        $c['RedisCache'],
+        $c['FindAllOfficesPublisher']
     );
 };

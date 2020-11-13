@@ -8,10 +8,11 @@
 
 ## 🚀 Environment Setup
   Stack used: <br />
-  - <strong>Framework:</strong> PhpSlim 3 <br/>
+  - <strong>Framework:</strong> PhpSlim <br/>
   - <strong>Language:</strong> PHP 7.4 <br/>
   - <strong>Database:</strong> Mariadb <br/>
   - <strong>Cache:</strong> Redis <br/>
+  - <strong>Queues:</strong> RabbitMQ <br/>
   - <strong>Unit testing:</strong> PHPUnit <br/>
   - <strong>Functional testing:</strong> Codeception <br/>
   - <strong>Infrastructure:</strong> Docker with Docker compose <br/>
@@ -30,13 +31,16 @@
 4. Start docker container with `docker-compose up -d
 5. Install all dependencies with: `make install`
 
+### 🛑 Important Notice 
+There are no provided volumes for Mariadb neither Redis so each time you start
+your docker containers you will lose all data.
+
 ### ✅ Migrations & Tests execution
-1. Before testing make sure you run the migrations.
-2. Enter php-fpm container by running the command `docker exec -it officesphp bash`
-3. Run migrations with `make migrations`
-4. Now exit container and go back to your project folder.
-5. Run unit tests with: `make test-unit`. There is coverage provided on: `var/phpunit/html/index.html`
-6. Run functional tests with: `make test-functional`
+1. Enter php-fpm container by running the command `docker exec -it officesphp bash`
+2. Run migrations with `make migrations`
+3. Now exit container and go back to your project folder.
+4. Run unit tests with: `make test-unit`. There is coverage provided on: `var/phpunit/html/index.html`
+5. Run functional tests with: `make test-functional`
 
 ## 👩‍💻 Project explanation
 

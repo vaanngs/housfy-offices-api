@@ -17,7 +17,6 @@ use Throwable;
 
 final class OfficeFinderTest extends TestCase
 {
-
     /** @var OfficeSpecificationFactoryInterface */
     private $officeSpecFactory;
 
@@ -32,10 +31,30 @@ final class OfficeFinderTest extends TestCase
      * @test
      * @throws Throwable
      */
-    public function should_build_finder()
+    public function should_build_to_find_all_offices()
     {
-        $office = FakeOfficeBuilder::makeUpdate();
+        $this->repository
+            ->shouldReceive('findAll')
+            ->once()
+            ->andReturn([FakeOfficeBuilder::makeCreate()]);
 
+        $finder = new OfficeFinder($this->officeSpecFactory, $this->repository);
+        $stub   = $finder->findAll();
+
+        self::assertIsArray($stub);
+
+        foreach ($stub as $item) {
+            self::assertInstanceOf(Office::class, $item);
+        }
+    }
+
+
+    /**
+     * @test
+     * @throws Throwable
+     */
+    public function should_build_to_find_office_by_uuid()
+    {
         $this->officeSpecFactory
             ->shouldReceive('createForFindWithUuid')
             ->once()
@@ -44,7 +63,7 @@ final class OfficeFinderTest extends TestCase
         $this->repository
             ->shouldReceive('getOneOrNull')
             ->once()
-            ->andReturn($office);
+            ->andReturn(FakeOfficeBuilder::makeUpdate());
 
         $finder = new OfficeFinder($this->officeSpecFactory, $this->repository);
         $stub   = $finder->findByUuid(Uuid::uuid4());

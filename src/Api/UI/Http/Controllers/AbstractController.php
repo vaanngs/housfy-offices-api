@@ -15,11 +15,10 @@ use Throwable;
  */
 abstract class AbstractController
 {
-
     /** @var CommandBus */
     private $commandBus;
 
-    /** @var RequestSpecificationInterface|null  */
+    /** @var RequestSpecificationInterface|null */
     private $specification;
 
 
@@ -30,8 +29,7 @@ abstract class AbstractController
     public function __construct(
         CommandBus $commandBus,
         ?RequestSpecificationInterface $specification = null
-    )
-    {
+    ) {
         $this->commandBus    = $commandBus;
         $this->specification = $specification;
     }

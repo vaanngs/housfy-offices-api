@@ -11,8 +11,7 @@ use Ramsey\Uuid\Uuid;
 
 final class DeleteOfficeSpecification implements RequestSpecificationInterface
 {
-
-    /** @inheritDoc */
+    /** {@inheritdoc} */
     public function isSatisfiedBy(RequestInterface $request): bool
     {
         try {
@@ -25,7 +24,6 @@ final class DeleteOfficeSpecification implements RequestSpecificationInterface
             Uuid::fromString($params[Param::UUID]);
 
             return true;
-
         } catch (\Exception $exception) {
             return false;
         }
