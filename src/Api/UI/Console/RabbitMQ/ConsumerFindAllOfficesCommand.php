@@ -84,6 +84,8 @@ final class ConsumerFindAllOfficesCommand extends CliCommand
                         $exception->getCode()
                     );
                 }
+
+                $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
             };
     }
 }

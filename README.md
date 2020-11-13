@@ -25,7 +25,7 @@
 
 ### 🛠️ Environment configuration
 
-1. Create a local environment file (`cp .env .env.dist`)
+1. Create a local environment file (`cp .env.dist .env`)
 2. Configure XDEBUG section. There are examples for MAC Os & Linux.
 3. Create docker network `docker network create local_housfy_redis`
 4. Start docker container with `docker-compose up -d
@@ -39,12 +39,11 @@ as well as the RabbitMQ consumer are run inside docker container so you dont hav
 to worry to enter them with docker exec. 
 
 ### ✅ Migrations & Tests execution
-1. Enter php-fpm container by running the command `docker exec -it officesphp bash`
-2. Run migrations with `make migrations`
-3. Now exit container and go back to your project folder.
-4. Run unit tests with: `make test-unit`. There is coverage provided on: `var/phpunit/html/index.html`
-5. Run functional tests with: `make test-functional`
-6. Every time you want to make a commit both unit & functional tests and cs-fixer will be triggered via 
+1. Run migrations with `make migrations`
+2. Now exit container and go back to your project folder.
+3. Run unit tests with: `make test-unit`. There is coverage provided on: `var/phpunit/html/index.html`
+4. Run functional tests with: `make test-functional`
+5. Every time you want to make a commit both unit & functional tests and cs-fixer will be triggered via 
 a pre-commit hook.
 
 ## 👩‍💻 Project explanation
