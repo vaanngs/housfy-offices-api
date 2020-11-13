@@ -30,7 +30,7 @@ test-unit: phpunit.xml ## Launch unit tests inside docker container
 	docker exec officesphp bash -c "bin/phpunit --stop-on-failure --testdox --colors=always"
 
 test-functional: ## Launch functional tests inside docker container
-	docker exec officesphp bash -c "bin/codecept run functional --colors=always"
+	docker exec officesphp bash -c "bin/codecept run functional"
 
 precommit-test: ## This is an automatic command to prevent commits without testing!! :)
 	docker exec officesphp bash -c "bin/phpunit --stop-on-failure --testdox --colors=always"
