@@ -34,6 +34,9 @@
 ### 🛑 Important Notice 
 There are no provided volumes for Mariadb neither Redis so each time you start
 your docker containers you will lose all data.
+All make commands related to cs-fixer, composer, migrations, testing (both unit & functional)
+as well as the RabbitMQ consumer are run inside docker container so you dont have 
+to worry to enter them with docker exec. 
 
 ### ✅ Migrations & Tests execution
 1. Enter php-fpm container by running the command `docker exec -it officesphp bash`
@@ -41,6 +44,8 @@ your docker containers you will lose all data.
 3. Now exit container and go back to your project folder.
 4. Run unit tests with: `make test-unit`. There is coverage provided on: `var/phpunit/html/index.html`
 5. Run functional tests with: `make test-functional`
+6. Every time you want to make a commit both unit & functional tests and cs-fixer will be triggered via 
+a pre-commit hook.
 
 ## 👩‍💻 Project explanation
 
